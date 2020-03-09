@@ -11,8 +11,9 @@ let package = Package(
         .library(name: "BorderButton", targets: ["BorderButton"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/theoriginalbit/ShapeButton.git", .upToNextMajor(from: "1.1.0"))
     ],
     targets: [
-        .target(name: "BorderButton", dependencies: []),
+        .target(name: "BorderButton", dependencies: ["ShapeButton"]),
     ]
 )
