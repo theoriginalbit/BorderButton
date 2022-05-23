@@ -17,7 +17,7 @@ open class BorderButton: ShapeButton {
         set {}
     }
 
-    open override var tintColor: UIColor! {
+    @objc open dynamic override var tintColor: UIColor! {
         didSet {
             setBackgroundColor(tintColor, for: .highlighted)
             setTitleColor(tintColor, for: .normal)
@@ -25,9 +25,9 @@ open class BorderButton: ShapeButton {
         }
     }
 
-    @objc open dynamic var titleTintColor: UIColor = .white {
+    @objc open dynamic var titleHighlightedTintColor: UIColor = .white {
         didSet {
-            setTitleColor(titleTintColor, for: .highlighted)
+            setTitleColor(titleHighlightedTintColor, for: .highlighted)
         }
     }
 
@@ -59,12 +59,13 @@ open class BorderButton: ShapeButton {
     }
 
     private func commonInit() {
+        debugPrint(super.tintColor, tintColor)
         backgroundColor = .clear
 
         setBackgroundColor(tintColor, for: .highlighted)
         setTitleColor(tintColor, for: .normal)
         setTitleColor(disabledTintColor, for: .disabled)
-        setTitleColor(titleTintColor, for: .highlighted)
+        setTitleColor(titleHighlightedTintColor, for: .highlighted)
 
         layer.borderColor = (isEnabled ? tintColor : disabledTintColor).cgColor
         layer.borderWidth = Self.borderWidthUseStandard
